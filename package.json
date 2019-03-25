@@ -1,0 +1,24 @@
+{
+  "name": "happyfoxdata",
+  "version": "0.0.1",
+  "description": "Gets data from happyfox api and (soon) stores it in SQL",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExtraHash/HappyFoxData.git"
+  },
+  "author": "Connor McLeod",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ExtraHash/HappyFoxData/issues"
+  },
+  "homepage": "https://github.com/ExtraHash/HappyFoxData#readme",
+  "dependencies": {
+    "pg": "^7.9.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}

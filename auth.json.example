@@ -1,0 +1,4 @@
+{
+    "login" : "api credentials here",
+    "password" : "postgres user password here"
+}

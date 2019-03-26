@@ -21,7 +21,7 @@ CREATE DATABASE`
 
 Select the database you just created:
 
-`postgres=# \connect happyfoxdata;
+`postgres=# \connect happyfoxdata;\n
 You are now connected to database "happyfoxdata" as user "postgres".
 `
 

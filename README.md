@@ -15,22 +15,27 @@ Launch the psql command line:
 
 Create a database for the project:
 
-`postgres=# CREATE DATABASE unassignedTickets;` 
-`CREATE DATABASE`
-
+```
+postgres=# CREATE DATABASE unassignedTickets;
+CREATE DATABASE
+```
 
 Select the database you just created:
 
-`postgres=# \connect happyfoxdata`
-`You are now connected to database "happyfoxdata" as user "postgres".`
+```
+postgres=# \connect happyfoxdata
+You are now connected to database "happyfoxdata" as user "postgres".
+```
 
 Create a table in the database:
 
-```happyfoxdata=# CREATE TABLE unassignedtickets (
+```
+happyfoxdata=# CREATE TABLE unassignedtickets (
 happyfoxdata(# timestamp text,
 happyfoxdata(# ticketcount integer
 happyfoxdata(# );
-CREATE TABLE```
+CREATE TABLE
+```
 
 
 ### Installation

@@ -1,7 +1,9 @@
 # HappyFoxData
+
 Small app to pull info from HappyFox and store it in an SQL database.
 
 ### Prerequisites
+
 * Node.JS installed
 * A running postgres database 
 

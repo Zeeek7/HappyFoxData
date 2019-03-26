@@ -2,6 +2,8 @@
 const request = require('request-promise');
 const pg = require('pg')
 const auth = require('./auth.json');
+
+// database configuration (change password in auth.json)
 const pgClient = new pg.Client({
     user: 'postgres',
     host: 'localhost',
@@ -10,9 +12,11 @@ const pgClient = new pg.Client({
     port: 5432,
 });
 
+// data to write to database and query string
 const unassignedData = [];
 var insertData = 'INSERT INTO unassignedtickets(timestamp, ticketcount) VALUES($1, $2) RETURNING *';
 
+// function to pretty print a timestamp
 function timestamp() {
     var now = new Date();
     var date = [now.getMonth() + 1, now.getDate(), now.getFullYear()];
@@ -29,7 +33,6 @@ function timestamp() {
 }
 
 // connect to psql
-
 try {
     pgClient.connect();
     console.log('Successfully connected to database...')

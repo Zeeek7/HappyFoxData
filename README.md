@@ -26,11 +26,11 @@ Select the database you just created:
 
 Create a table in the database:
 
-`happyfoxdata=# CREATE TABLE unassignedtickets (`
-`happyfoxdata(# timestamp text,`
-`happyfoxdata(# ticketcount integer`
-`happyfoxdata(# );`
-`CREATE TABLE`
+- `happyfoxdata=# CREATE TABLE unassignedtickets (`
+- `happyfoxdata(# timestamp text,`
+- `happyfoxdata(# ticketcount integer`
+- `happyfoxdata(# );`
+- `CREATE TABLE`
 
 
 ### Installation

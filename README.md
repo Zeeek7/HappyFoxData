@@ -30,11 +30,11 @@ You are now connected to database "happyfoxdata" as user "postgres".
 Create a few tables in the database:
 
 ```
-happyfoxdata=# CREATE TABLE vrstickets (
-happyfoxdata(# timestamp text,
-happyfoxdata(# ticketcount integer
-happyfoxdata(# );
+CREATE TABLE vrstickets (timestamp text, ticketcount integer);
+```
+<pre>
 CREATE TABLE
+</pre>
 
 happyfoxdata=# CREATE TABLE mainttickets (
 happyfoxdata(# timestamp text,

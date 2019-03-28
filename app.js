@@ -1,4 +1,8 @@
-﻿// requires
+﻿// Copyright (C) 2019, Connor McLeod
+//
+// Please see the included LICENSE file for more information.
+
+// requires
 const request = require('request-promise');
 const pg = require('pg');
 const auth = require('./auth.json');
@@ -12,7 +16,7 @@ const pgClient = new pg.Client({
     port: 5432,
 });
 
-// function to pretty print a timestamp
+// pretty print a timestamp
 function timestamp() {
     var now = new Date();
     var date = [now.getMonth() + 1, now.getDate(), now.getFullYear()];
@@ -36,14 +40,14 @@ try {
     console.log('Error connecting to database')
 }
 
-// async block
+// call functions
 async function update() {
     await getHappyFoxData(30, `vrstickets`);
     await getHappyFoxData(31, `mainttickets`);
     await getHappyFoxData(32, `logontickets`);
 }
 
-// gets data every 30 seconds
+// gets data every 5 minutes
 async function init() {
     await update();
     setInterval(update, 300000);
@@ -53,7 +57,7 @@ async function init() {
     await init();
 })()
 
-// get Happy Fox Data
+// get happyfox report data
 async function getHappyFoxData(report, tablename) {
     const requestOptions = {
         method: 'GET',
@@ -73,7 +77,8 @@ async function getHappyFoxData(report, tablename) {
             if (err) {
                 console.log(err.stack);
             } else {
-                console.log(`Stored in database in table ${tablename}:\n`, res.rows[0])
+                console.log(`Stored in database in table ${tablename}:\n`, res.rows[0]);
+                console.log(result);
             }
         })
         return result;

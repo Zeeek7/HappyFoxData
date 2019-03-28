@@ -1,6 +1,6 @@
 ﻿// requires
 const request = require('request-promise');
-const pg = require('pg')
+const pg = require('pg');
 const auth = require('./auth.json');
 
 // database configuration (change password in auth.json)
@@ -11,10 +11,6 @@ const pgClient = new pg.Client({
     password: `${auth.password}`,
     port: 5432,
 });
-
-// data to write to database and query string
-const unassignedData = [];
-var insertData = 'INSERT INTO unassignedtickets(timestamp, ticketcount) VALUES($1, $2) RETURNING *';
 
 // function to pretty print a timestamp
 function timestamp() {
@@ -42,13 +38,15 @@ try {
 
 // async block
 async function update() {
-    await getHappyFoxData()
+    await getHappyFoxData(30, `vrstickets`);
+    await getHappyFoxData(31, `mainttickets`);
+    await getHappyFoxData(32, `logontickets`);
 }
 
 // gets data every 30 seconds
 async function init() {
     await update();
-    setInterval(update, 30000);
+    setInterval(update, 300000);
 };
 
 (async () => {
@@ -56,29 +54,28 @@ async function init() {
 })()
 
 // get Happy Fox Data
-async function getHappyFoxData() {
+async function getHappyFoxData(report, tablename) {
     const requestOptions = {
         method: 'GET',
-        uri: 'https://hertzcbo.happyfox.com/api/1.1/json/report/2/',
+        uri: `https://hertzcbo.happyfox.com/api/1.1/json/report/${report}/`,
         headers: {
             authorization: `${auth.login}`
         },
         json: true,
     };
     try {
+        const fetchedData = [];
         var result = await request(requestOptions);
         // console.log(result);
-        unassignedData[0] = timestamp();
-        unassignedData[1] = result.ticket_count;
-        pgClient.query(insertData, unassignedData, (err, res) => {
+        fetchedData[0] = timestamp();
+        fetchedData[1] = result.ticket_count;
+        pgClient.query(`INSERT INTO ${tablename}(timestamp, ticketcount) VALUES($1, $2) RETURNING *`, fetchedData, (err, res) => {
             if (err) {
                 console.log(err.stack);
             } else {
-                console.log(res.rows[0])
+                console.log(`Stored in database in table ${tablename}:\n`, res.rows[0])
             }
         })
-
-        // console.log(unassignedData);
         return result;
     } catch (err) {
         console.log('** Error:\n', err);

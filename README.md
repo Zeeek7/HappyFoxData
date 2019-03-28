@@ -15,9 +15,8 @@ Launch the psql command line:
 
 Create a database for the project:
 
-```
-postgres=# CREATE DATABASE happyfoxdata;
-CREATE DATABASE
+```sql
+CREATE DATABASE happyfoxdata;
 ```
 
 Select the database you just created:

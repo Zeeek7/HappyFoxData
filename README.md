@@ -32,23 +32,15 @@ Create a few tables in the database:
 ```
 CREATE TABLE vrstickets (timestamp text, ticketcount integer);
 ```
-<pre>
-CREATE TABLE
-</pre>
 
-happyfoxdata=# CREATE TABLE mainttickets (
-happyfoxdata(# timestamp text,
-happyfoxdata(# ticketcount integer
-happyfoxdata(# );
-CREATE TABLE
-
-happyfoxdata=# CREATE TABLE logontickets (
-happyfoxdata(# timestamp text,
-happyfoxdata(# ticketcount integer
-happyfoxdata(# );
-CREATE TABLE
+```
+CREATE TABLE mainttickets (timestamp text, ticketcount integer);
 ```
 
+
+```
+CREATE TABLE logontickets (timestamp text, ticketcount integer);
+```
 
 ### Installation
 

@@ -15,7 +15,7 @@ Launch the psql command line:
 
 Create a database for the project:
 
-```sql
+```psql
 CREATE DATABASE happyfoxdata;
 ```
 

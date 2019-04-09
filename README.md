@@ -48,9 +48,9 @@ CREATE TABLE logontickets (timestamp text, ticketcount integer);
 
 ### Setup
 
-`cp auth.json.example auth.json`
+`cp config.json.example config.json`
 
-Change the token in auth.json to your HappyFox API credentials.
+Change the database connection details and happyfox api credential details in config.json
 
 ### Running
 

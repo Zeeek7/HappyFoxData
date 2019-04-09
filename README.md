@@ -13,6 +13,8 @@ Launch the psql command line:
 
 `sudo -i -u postgres`
 
+`psql`
+
 Create a database for the project:
 
 ```sql

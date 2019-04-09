@@ -5,5 +5,5 @@
     "psqlDBName" : "postgres database name here",
     "psqlPort" : "postgres database port here",
     "happyfoxKey" : "happyfox api credentials here",
-    "happyfoxBaseURI" : "happyfox api endpoint goes here",
+    "happyfoxBaseURI" : "happyfox api endpoint goes here"
 }

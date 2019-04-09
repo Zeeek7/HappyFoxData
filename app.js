@@ -5,15 +5,15 @@
 // requires
 const request = require('request-promise');
 const pg = require('pg');
-const auth = require('./auth.json');
+const config = require('./config.json');
 
 // database configuration (change password in auth.json)
 const pgClient = new pg.Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'happyfoxdata',
-    password: `${auth.password}`,
-    port: 5432,
+    user: `${config.psqlUser}`,
+    host: `${config.psqlIP}`,
+    database: `${config.psqlDBName}`,
+    password: `${config.psqlPassword}`,
+    port: `${config.psqlPort}`,
 });
 
 // pretty print a timestamp
@@ -42,9 +42,9 @@ try {
 
 // call functions
 async function update() {
-    await getHappyFoxData(30, `vrstickets`);
-    await getHappyFoxData(31, `mainttickets`);
-    await getHappyFoxData(32, `logontickets`);
+    await getHappyFoxData(`json/report/31/`, `vrstickets`);
+    await getHappyFoxData(`json/report/31/`, `mainttickets`);
+    await getHappyFoxData(`json/report/32/`, `logontickets`);
 }
 
 // gets data every 5 minutes
@@ -61,9 +61,9 @@ async function init() {
 async function getHappyFoxData(report, tablename) {
     const requestOptions = {
         method: 'GET',
-        uri: `https://hertzcbo.happyfox.com/api/1.1/json/report/${report}/`,
+        uri: `${config.happyfoxBaseURI}${report}`,
         headers: {
-            authorization: `${auth.login}`
+            authorization: `${config.happyfoxKey}`
         },
         json: true,
     };

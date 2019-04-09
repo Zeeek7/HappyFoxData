@@ -1,0 +1,9 @@
+{
+    "psqlUser" : "postgres username here"
+    "psqlPassword" : "postgres user password here",
+    "psqlIP" : "postgres database IP address here",
+    "psqlDBName" : "postgres database name here",
+    "psqlPort" : "postgres database port here",
+    "happyfoxKey" : "happyfox api credentials here",
+    "happyfoxBaseURI" : "happyfox api endpoint goes here",
+}
